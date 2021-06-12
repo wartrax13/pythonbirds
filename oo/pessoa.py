@@ -19,8 +19,11 @@ class Pessoa:
 class Homem(Pessoa):
     pass
 
+class Mutante(Pessoa):
+    olhos = 3
+
 if __name__ == '__main__':
-    renzo = Homem(nome='Pedro')
+    renzo = Mutante(nome='Pedro')
     pedro = Homem(renzo, nome='Renzo')
     print(Pessoa.cumprimentar(pedro))
     print(id(pedro))
@@ -35,16 +38,15 @@ if __name__ == '__main__':
     del pedro.olhos
     print(pedro.__dict__)
     print(renzo.__dict__)
-    Pessoa.olhos = 3
     print(Pessoa.olhos)
     print(pedro.olhos)
     print(renzo.olhos)
     print(id(Pessoa.olhos), id(pedro.olhos), id(renzo.olhos))
     print(Pessoa.metodo_estatico(), pedro.metodo_estatico())
     print(Pessoa.nome_e_atributos_de_classe(), pedro.nome_e_atributos_de_classe())
-
     pessoa = Pessoa('Anonimo')
     print(isinstance(pessoa, Pessoa)) # verdadeiro: a pessoa acima é uma pessoa
     print(isinstance(pessoa, Homem)) #falso: uma pessoa nao necessariamente é um Homem
     print(isinstance(renzo, Pessoa))  # verdadeiro: a pessoa acima é uma pessoa
     print(isinstance(renzo, Homem))  # falso: uma pessoa nao necessariamente é um Homem
+    print(renzo.olhos)
